@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentinstag ❤</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        #yes-btn {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        #no-btn {
+            background-color: #666;
+            color: white;
+            position: absolute;
+        }
+        .animation {
+            display: none;
+            margin-top: 30px;
+        }
+        .stick-figure {
+            font-size: 40px;
+            display: inline-block;
+            margin: 10px;
+            transition: all 0.5s ease;
+        }
+        #heart {
+            font-size: 30px;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Möchtest du mein Valentins-Date sein? 💖</h1>
+        <div class="buttons">
+            <button id="yes-btn" onclick="showAnimation()">Ja! 🥰</button>
+            <button id="no-btn" onmouseover="moveNoButton()">Nein 😢</button>
+        </div>
+        <div class="animation" id="animation">
+            <span class="stick-figure">😊</span>
+            <span id="heart">❤️</span>
+            <span class="stick-figure">😊</span>
+        </div>
+    </div>
+
+    <script>
+        function showAnimation() {
+            document.getElementById('animation').style.display = 'block';
+            document.getElementById('heart').style.opacity = '1';
+            document.getElementById('heart').style.transform = 'translateX(-50px)';
+        }
+
+        function moveNoButton() {
+            let button = document.getElementById("no-btn");
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 150);
+            button.style.left = ${x}px;
+            button.style.top = ${y}px;
+        }
+    </script>
+
+</body>
+</html>
