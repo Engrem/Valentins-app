@@ -9,12 +9,14 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #ffe6e6;
+            overflow: hidden; /* Verhindert Scrollen durch den bewegenden Button */
         }
         .container {
             margin-top: 50px;
         }
         .buttons {
             margin-top: 20px;
+            position: relative;
         }
         button {
             font-size: 20px;
@@ -32,6 +34,8 @@
             background-color: #666;
             color: white;
             position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .animation {
             display: none;
@@ -56,7 +60,7 @@
         <h1>Möchtest du mein Valentins-Date sein? 💖</h1>
         <div class="buttons">
             <button id="yes-btn" onclick="showAnimation()">Ja! 🥰</button>
-            <button id="no-btn" onmouseover="moveNoButton()">Nein 😢</button>
+            <button id="no-btn">Nein 😢</button>
         </div>
         <div class="animation" id="animation">
             <span class="stick-figure">😊</span>
@@ -66,19 +70,22 @@
     </div>
 
     <script>
-        function showAnimation() {
-            document.getElementById('animation').style.display = 'block';
-            document.getElementById('heart').style.opacity = '1';
-            document.getElementById('heart').style.transform = 'translateX(-50px)';
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const noBtn = document.getElementById("no-btn");
 
-        function moveNoButton() {
-            let button = document.getElementById("no-btn");
-            let x = Math.random() * (window.innerWidth - 150);
-            let y = Math.random() * (window.innerHeight - 150);
-            button.style.left = ${x}px;
-            button.style.top = ${y}px;
-        }
+            noBtn.addEventListener("mouseover", function () {
+                let x = Math.random() * (window.innerWidth - 150);
+                let y = Math.random() * (window.innerHeight - 150);
+                noBtn.style.left = ${x}px;
+                noBtn.style.top = ${y}px;
+            });
+
+            document.getElementById("yes-btn").addEventListener("click", function () {
+                document.getElementById('animation').style.display = 'block';
+                document.getElementById('heart').style.opacity = '1';
+                document.getElementById('heart').style.transform = 'translateX(-50px)';
+            });
+        });
     </script>
 
 </body>
